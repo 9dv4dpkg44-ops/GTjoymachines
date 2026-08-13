@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <nav class="container">
+
+            <a href="#home" class="logo">
+                My Website
+            </a>
+
+            <!-- Hamburger Button -->
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu -->
+            <ul class="menu" id="menu">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HOME
+        ========================== -->
+
+        <section id="home" class="hero">
+
+            <div class="container hero-content">
+
+                <h1>Welcome to My Website</h1>
+
+                <p>
+                    A simple, clean and mobile-friendly
+                    one-page website built with HTML5 and CSS.
+                </p>
+
+                <a href="#about" class="button">
+                    Learn More
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about">
+
+            <div class="container">
+
+                <h2>About</h2>
+
+                <p class="section-intro">
+                    Tell your visitors who you are and what you do.
+                </p>
+
+                <div class="about-content">
+
+                    <p>
+                        This section can contain your introduction,
+                        company information, personal bio, or anything
+                        else you want your visitors to know.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
+
+        <section id="services">
+
+            <div class="container">
+
+                <h2>Services</h2>
+
+                <p class="section-intro">
+                    Highlight the things you offer.
+                </p>
+
+                <div class="services">
+
+                    <article class="card">
+                        <h3>Service One</h3>
+
+                        <p>
+                            Describe your first service or feature here.
+                        </p>
+                    </article>
+
+
+                    <article class="card">
+                        <h3>Service Two</h3>
+
+                        <p>
+                            Describe your second service or feature here.
+                        </p>
+                    </article>
+
+
+                    <article class="card">
+                        <h3>Service Three</h3>
+
+                        <p>
+                            Describe your third service or feature here.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact">
+
+            <div class="container">
+
+                <h2>Contact</h2>
+
+                <p>
+                    Ready to get in touch? Send me an email.
+                </p>
+
+                <a
+                    href="mailto:you@example.com"
+                    class="button contact-button"
+                >
+                    Email Me
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        <p>&copy; 2026 My Website. All rights reserved.</p>
+    </footer>
+
+
+    <!-- =========================
+         ONE SMALL JAVASCRIPT
+    ========================== -->
+
+   <script>
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("menu-open");
+
+        const isOpen = menu.classList.contains("menu-open");
+
+        hamburger.setAttribute("aria-expanded", isOpen);
+        hamburger.setAttribute(
+            "aria-label",
+            isOpen ? "Close menu" : "Open menu"
+        );
+
+        hamburger.classList.toggle("is-active");
+    });
+
+
+    // Close menu when a menu item is selected
+    menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+
+            menu.classList.remove("menu-open");
+
+            hamburger.classList.remove("is-active");
+
+            hamburger.setAttribute("aria-expanded", "false");
+
+            hamburger.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        });
+    });
+</script>
+
+</body>
+</html>
