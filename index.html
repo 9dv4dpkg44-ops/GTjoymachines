@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>G&T Joy Machines LLC</title>
+    <title>My Website</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,7 +19,7 @@
         <nav class="container">
 
             <a href="#home" class="logo">
-                <img src= "logo.png" alt= "GT Joy Machines LLC" width="100" height="100">
+                <img src= "logo.png" alt= "GT Joy Machines LLC" width="125">
             </a>
 
             <!-- Hamburger Button -->
@@ -65,24 +65,99 @@
              HOME
         ========================== -->
 
-        <section id="home" class="hero">
+       
+    <section id="home" class="hero">
+
+    <div class="hero-slider">
+
+        <!-- Slide 1 -->
+        <div class="hero-slide active"
+             style="background-image: linear-gradient(rgba(0, 77, 77, 0.72), rgba(0, 45, 45, 0.78)), url('claw-machine-1.jpg');">
 
             <div class="container hero-content">
 
-                <h1>Welcome to My Website</h1>
+                <span class="hero-label">G&T JOY MACHINES LLC</span>
+
+                <h1>Bring the Fun to Your Business</h1>
 
                 <p>
-                    A simple, clean and mobile-friendly
-                    one-page website built with HTML5 and CSS.
+                    Professional claw machines and arcade entertainment
+                    that attract customers and create an exciting experience.
                 </p>
 
-                <a href="#about" class="button">
-                    Learn More
+                <a href="#contact" class="button">
+                    Bring a Machine to Your Business
                 </a>
 
             </div>
+        </div>
 
-        </section>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide"
+             style="background-image: linear-gradient(rgba(0, 77, 77, 0.72), rgba(0, 45, 45, 0.78)), url('claw-machine-2.jpg');">
+
+            <div class="container hero-content">
+
+                <span class="hero-label">ENTERTAINMENT THAT STANDS OUT</span>
+
+                <h1>Give Your Customers<br>Something to Play For</h1>
+
+                <p>
+                    Eye-catching crane games designed to add excitement
+                    and keep customers engaged.
+                </p>
+
+                <a href="#services" class="button">
+                    Explore Our Machines
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- Slide 3 -->
+        <div class="hero-slide"
+             style="background-image: linear-gradient(rgba(0, 77, 77, 0.72), rgba(0, 45, 45, 0.78)), url('claw-machine-3.jpg');">
+
+            <div class="container hero-content">
+
+                <span class="hero-label">LOCAL • PROFESSIONAL • FUN</span>
+
+                <h1>Turn Empty Space<br>Into Entertainment</h1>
+
+                <p>
+                    We partner with local businesses to provide quality
+                    arcade and claw-machine experiences.
+                </p>
+
+                <a href="#contact" class="button">
+                    Let's Work Together
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Slider navigation -->
+    <div class="hero-dots">
+
+        <button class="hero-dot active"
+                aria-label="Show slide 1"></button>
+
+        <button class="hero-dot"
+                aria-label="Show slide 2"></button>
+
+        <button class="hero-dot"
+                aria-label="Show slide 3"></button>
+
+    </div>
+
+</section>
+```
+
 
 
         <!-- =========================
@@ -196,7 +271,7 @@
     ========================== -->
 
     <footer>
-        <p>&copy; 2026 My Website. All rights reserved.</p>
+        <p>&copy; 2026 G&T Joy Machines LLC</p>
     </footer>
 
 
@@ -239,7 +314,79 @@
             );
         });
     });
+
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+
+let currentSlide = 0;
+let heroTimer;
+
+
+function showHeroSlide(index) {
+
+    heroSlides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    heroDots.forEach(dot => {
+        dot.classList.remove("active");
+    });
+
+    heroSlides[index].classList.add("active");
+    heroDots[index].classList.add("active");
+
+    currentSlide = index;
+}
+
+
+/* Automatically rotate */
+
+function startHeroSlider() {
+
+    heroTimer = setInterval(() => {
+
+        let nextSlide = currentSlide + 1;
+
+        if (nextSlide >= heroSlides.length) {
+            nextSlide = 0;
+        }
+
+        showHeroSlide(nextSlide);
+
+    }, 5000);
+}
+
+
+/* Allow visitors to select a slide */
+
+heroDots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        clearInterval(heroTimer);
+
+        showHeroSlide(index);
+
+        startHeroSlider();
+
+    });
+
+});
+
+
+startHeroSlider();
+
+
+
+
 </script>
+
+
 
 </body>
 </html>
