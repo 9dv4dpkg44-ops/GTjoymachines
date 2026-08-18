@@ -19,7 +19,7 @@
         <nav class="container">
 
             <a href="#home" class="logo">
-                <img src= "logo.png" alt= "GT Joy Machines LLC" width="125">
+                <img src= "logo.png" alt= "GT Joy Machines LLC">
             </a>
 
             <!-- Hamburger Button -->
@@ -156,7 +156,6 @@
     </div>
 
 </section>
-```
 
 
 
@@ -252,12 +251,11 @@
                     Ready to get in touch? Send me an email.
                 </p>
 
-                <a
-                    href="mailto:you@example.com"
-                    class="button contact-button"
-                >
+                
+                    
+                    <button class="button contact-button" id="openLeadForm">
                     Email Me
-                </a>
+              </button>
 
             </div>
 
@@ -271,8 +269,110 @@
     ========================== -->
 
     <footer>
-        <p>&copy; 2026 G&T Joy Machines LLC</p>
+        <p>&copy; 2026 G&T JOY MACHINES LLC</p>
+
     </footer>
+
+<!-- =========================
+     LEAD CAPTURE POPUP
+========================= -->
+
+<div class="modal" id="leadModal">
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            id="closeLeadForm"
+            aria-label="Close"
+        >
+            &times;
+        </button>
+
+        <h2>Let's Work Together</h2>
+
+        <p>
+            Interested in having a claw machine at your business?
+            Fill out the form below and we'll get in touch.
+        </p>
+
+
+        <form id="leadForm">
+
+            <label for="businessName">
+                Business Name
+            </label>
+
+            <input
+                type="text"
+                id="businessName"
+                name="businessName"
+                required
+            >
+
+
+            <label for="contactName">
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="contactName"
+                name="contactName"
+                required
+            >
+
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+            >
+
+
+            <label for="phone">
+                Phone
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+            >
+
+
+            <label for="message">
+                Tell Us About Your Business
+            </label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Tell us a little about your business and available space."
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="button contact-button"
+            >
+                Request Information
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
 
 
     <!-- =========================
@@ -381,6 +481,26 @@ heroDots.forEach((dot, index) => {
 
 startHeroSlider();
 
+
+
+/* ========================= LEAD CAPTURE MODAL ========================= */ 
+
+const leadModal = document.getElementById("leadModal"); 
+const openLeadForm = document.getElementById("openLeadForm"); 
+const closeLeadForm = document.getElementById("closeLeadForm"); 
+
+/* Open modal */ openLeadForm.addEventListener("click", () => 
+{ leadModal.classList.add("modal-open"); }); 
+/* Close modal */ closeLeadForm.addEventListener("click", () => 
+{ leadModal.classList.remove("modal-open"); }); 
+
+
+/* Close when clicking outside */ leadModal.addEventListener("click", (event) => 
+{ if (event.target === leadModal) { leadModal.classList.remove("modal-open"); } }); 
+
+
+/* Close with Escape key */ document.addEventListener("keydown", (event) => 
+{ if (event.key === "Escape") { leadModal.classList.remove("modal-open"); } });
 
 
 
